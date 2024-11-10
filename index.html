@@ -11,100 +11,95 @@ a8P_____88 88P'   "88"    "8a 88P'   "88"    "8a ""     `Y8
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>emma english</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="description" content="me me me me me" />
-
-    <!-- jQuery (can replace with a CDN link or local version if preferred) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Modernizr -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <style>
-        /* Replace inline Tumblr-specific CSS with equivalent CSS */
-        .post-background { background: #fbfbfb; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Photos</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <div id="root"></div>
 
-<div id="container">
-    <header class="main">
-        <div class="title">
-            <h1><a href="/">Your Blog Title</a></h1>
-            <nav>
-                <span class="page"><a href="#">Page 1</a></span>
-                <span class="page"><a href="#">Page 2</a></span>
-            </nav>
-        </div>
-        <div class="tagged">Viewing all entries marked "Tag"</div>
-    </header>
+  <!-- React and ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
-    <section id="posts">
-        <!-- Sample Post 1 -->
-        <section class="post fade double">
-            <div class="text">
-                <h2><a href="#">Post Title 1</a></h2>
-                <div class="text-body">
-                    This is the content of your first post.
-                </div>
-            </div>
-        </section>
+  <!-- Babel for JSX support in the browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-        <!-- Sample Photo Post -->
-        <section class="post fade single">
-            <div class="post-background">
-                <a href="#"><img src="https://via.placeholder.com/500" alt="Sample Image" /></a>
-            </div>
-            <div class="caption">Photo caption here</div>
-        </section>
-    </section>
+  <script type="text/babel">
+    const { BrowserRouter, Route, Link } = ReactRouterDOM;
 
-    <footer class="primary-footer">
-        <a href="#" class="load-more">Load more...</a>
-    </footer>
+    // Draggable Photo Component
+    function DraggablePhoto({ source, initialX, initialY }) {
+      const ref = React.useRef();
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-    <script>
-        $(function() {
-            // Infinite scroll setup
-            $('#posts').masonry({
-                columnWidth: 300,
-                itemSelector: '.post',
-                isFitWidth: true
-            });
+      React.useEffect(() => {
+        const element = ref.current;
+        element.style.position = "absolute";
+        element.style.left = `${initialX}px`;
+        element.style.top = `${initialY}px`;
 
-            // Simple image fade-in effect
-            $(".post").hover(function() {
-                $(this).find('img').stop().animate({"opacity": "0.4"}, 300);
-            }, function() {
-                $(this).find('img').stop().animate({"opacity": "1"}, 300);
-            });
+        const handleDrag = (e) => {
+          element.style.left = `${e.pageX}px`;
+          element.style.top = `${e.pageY}px`;
+        };
 
-            // Resize video if needed
-            function resizeVideo() {
-                const $video = $('.tumblr_video_container');
-                let newHeight = 260; // Adjust for mobile
-
-                if ($(window).width() >= 640) {
-                    newHeight = 560;
-                }
-
-                $video.css('height', newHeight);
-            }
-
-            resizeVideo();
-            $(window).resize(resizeVideo);
+        element.addEventListener("mousedown", () => {
+          document.addEventListener("mousemove", handleDrag);
         });
-    </script>
-</div>
+
+        document.addEventListener("mouseup", () => {
+          document.removeEventListener("mousemove", handleDrag);
+        });
+      }, []);
+
+      return <img ref={ref} src={source} className="draggable" alt="Draggable" />;
+    }
+
+    function App() {
+      return (
+        <BrowserRouter>
+          <div className="container">
+            <div className="background">
+              <Link to="/about/pic1">
+                <DraggablePhoto source="media/pic1.png" initialX={425} initialY={100} />
+              </Link>
+              <Link to="/about/pic2">
+                <DraggablePhoto source="media/pic2.png" initialX={300} initialY={200} />
+              </Link>
+              <Link to="/about/pic3">
+                <DraggablePhoto source="media/pic3.png" initialX={300} initialY={300} />
+              </Link>
+              <Link to="/about/pic4">
+                <DraggablePhoto source="media/pic4.png" initialX={400} initialY={400} />
+              </Link>
+              <Link to="/about/pic5">
+                <DraggablePhoto source="media/pic5.png" initialX={500} initialY={500} />
+              </Link>
+              <Link to="/about/pic6">
+                <DraggablePhoto source="media/pic6.png" initialX={300} initialY={600} />
+              </Link>
+              <Link to="/about/pic7">
+                <DraggablePhoto source="media/pic7.png" initialX={350} initialY={620} />
+              </Link>
+              <Link to="/about/pic8">
+                <DraggablePhoto source="media/pic8.png" initialX={300} initialY={500} />
+              </Link>
+              <Link to="/about/pic9">
+                <DraggablePhoto source="media/pic9.png" initialX={330} initialY={250} />
+              </Link>
+              <Link to="/about/pic10">
+                <DraggablePhoto source="media/pic10.png" initialX={450} initialY={420} />
+              </Link>
+            </div>
+          </div>
+        </BrowserRouter>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
 </body>
 </html>
+

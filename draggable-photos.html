@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emma Wilkins - Photo Gallery</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="draggable-photos-styles.css">
 </head>
 <body>
     <div class="header">
-        <a href="dvd-logo.html" target="_blank" class="dvd-link">DVD Logo</a>
-        <h1>Emma English Wilkins - Photo Collection</h1>
+        <h1>Imagine with your own Photo Collection</h1>
     </div>
     <div class="container">
         <img src="media/pic1.png" class="draggable" alt="Photo 1" style="left: 425px; top: 100px;">
@@ -24,57 +23,8 @@
         <img src="media/pic9.png" class="draggable" alt="Photo 9" style="left: 330px; top: 250px;">
         <img src="media/pic10.png" class="draggable" alt="Photo 10" style="left: 450px; top: 420px;">
     </div>
-    <script src="script.js"></script>
+    <script src="draggable-photos-script.js"></script>
 </body>
 </html>
 
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
 
-.header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    height: 100px;
-}
-
-.dvd-link {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 5px;
-}
-
-.container {
-    position: relative;
-    width: 100%;
-    min-height: calc(100vh - 100px);
-    overflow: hidden;
-}
-
-.draggable {
-    position: absolute;
-    cursor: move;
-    user-select: none;
-    transition: transform 0.1s;
-    max-width: 200px;
-    max-height: 200px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.draggable:active {
-    transform: scale(1.05);
-    z-index: 1000;
-}

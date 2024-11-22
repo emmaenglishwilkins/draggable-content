@@ -11,61 +11,95 @@ a8P_____88 88P'   "88"    "8a 88P'   "88"    "8a ""     `Y8
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Draggable Photos</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-    }
-
-    .draggable {
-      position: absolute;
-      cursor: pointer;
-      user-select: none;
-    }
-  </style>
-  <h1>Emma English Wilkinss</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Photos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .draggable {
+            position: absolute;
+            cursor: move;
+            user-select: none;
+            transition: transform 0.1s;
+            max-width: 200px;
+            max-height: 200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .draggable:active {
+            transform: scale(1.05);
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+      <!--   ,adPPYba, 88,dPYba,,adPYba,  88,dPYba,,adPYba,  ,adPPYYba,   a8P_____88 88P'   "88"    "8a 88P'   "88"    "8a ""     `Y8   8PP""""""" 88      88      88 88      88      88 ,adPPPPP88   "8b,   ,aa 88      88      88 88      88      88 88,    ,88    `"Ybbd8"' 88      88      88 88      88      88 `"8bbdP"Y8    -->
 
-  <div class="container">
-    <img src="media/pic1.png" class="draggable" alt="Draggable 1" style="left: 425px; top: 100px;">
-    <img src="media/pic2.png" class="draggable" alt="Draggable 2" style="left: 300px; top: 200px;">
-    <img src="media/pic3.png" class="draggable" alt="Draggable 3" style="left: 300px; top: 300px;">
-    <img src="media/pic4.png" class="draggable" alt="Draggable 4" style="left: 400px; top: 400px;">
-    <img src="media/pic5.png" class="draggable" alt="Draggable 5" style="left: 500px; top: 500px;">
-    <img src="media/pic6.png" class="draggable" alt="Draggable 6" style="left: 300px; top: 600px;">
-    <img src="media/pic7.png" class="draggable" alt="Draggable 7" style="left: 350px; top: 620px;">
-    <img src="media/pic8.png" class="draggable" alt="Draggable 8" style="left: 300px; top: 500px;">
-    <img src="media/pic9.png" class="draggable" alt="Draggable 9" style="left: 330px; top: 250px;">
-    <img src="media/pic10.png" class="draggable" alt="Draggable 10" style="left: 450px; top: 420px;">
-  </div>
+        <h1>adPPYba, 88,dPYba,,adPYba,  88,dPYba,,adPYba,  ,adPPYYba,   a8P_____88 88P'   "88"    "8a 88P'   "88"    "8a ""     `Y8   8PP""""""" 88      88      88 88      88      88 ,adPPPPP88   "8b,   ,aa 88      88      88 88      88      88 88,    ,88    `"Ybbd8"' 88      88      88 88      88      88 `"8bbdP"Y8</h1>
+    </div>
+    <div class="container">
+        <img src="media/pic1.png" class="draggable" alt="Photo 1" style="left: 425px; top: 100px;">
+        <img src="media/pic2.png" class="draggable" alt="Photo 2" style="left: 300px; top: 200px;">
+        <img src="media/pic3.png" class="draggable" alt="Photo 3" style="left: 300px; top: 300px;">
+        <img src="media/pic4.png" class="draggable" alt="Photo 4" style="left: 400px; top: 400px;">
+        <img src="media/pic5.png" class="draggable" alt="Photo 5" style="left: 500px; top: 500px;">
+        <img src="media/pic6.png" class="draggable" alt="Photo 6" style="left: 300px; top: 600px;">
+        <img src="media/pic7.png" class="draggable" alt="Photo 7" style="left: 350px; top: 620px;">
+        <img src="media/pic8.png" class="draggable" alt="Photo 8" style="left: 300px; top: 500px;">
+        <img src="media/pic9.png" class="draggable" alt="Photo 9" style="left: 330px; top: 250px;">
+        <img src="media/pic10.png" class="draggable" alt="Photo 10" style="left: 450px; top: 420px;">
+    </div>
 
-  <script>
-    const draggables = document.querySelectorAll('.draggable');
+    <script>
+        const draggables = document.querySelectorAll('.draggable');
+        
+        draggables.forEach(img => {
+            let isDragging = false;
+            let startX, startY, initialLeft, initialTop;
 
-    draggables.forEach(img => {
-      img.addEventListener('mousedown', (event) => {
-        const offsetX = event.clientX - img.offsetLeft;
-        const offsetY = event.clientY - img.offsetTop;
-
-        const handleMouseMove = (e) => {
-          img.style.left = `${e.clientX - offsetX}px`;
-          img.style.top = `${e.clientY - offsetY}px`;
-        };
-
-        document.addEventListener('mousemove', handleMouseMove);
-
-        document.addEventListener('mouseup', () => {
-          document.removeEventListener('mousemove', handleMouseMove);
-        }, { once: true });
-      });
-    });
-  </script>
+            img.addEventListener('mousedown', startDragging);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDragging);
+            
+            function startDragging(e) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                initialLeft = img.offsetLeft;
+                initialTop = img.offsetTop;
+                img.style.cursor = 'grabbing';
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                img.style.left = `${initialLeft + dx}px`;
+                img.style.top = `${initialTop + dy}px`;
+            }
+            
+            function stopDragging() {
+                isDragging = false;
+                img.style.cursor = 'move';
+            }
+        });
+    </script>
 </body>
 </html>
-

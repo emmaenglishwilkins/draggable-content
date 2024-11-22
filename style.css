@@ -24,4 +24,9 @@
     width: 100px;
     height: 100px;
   }
+
+  .nav-link {
+    display: block;
+    margin-bottom: 10px;
+}
   

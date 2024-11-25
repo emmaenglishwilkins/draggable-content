@@ -1,22 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Arrange elements horizontally */
+  justify-content: space-between;
   align-items: center;
   background: #000000;
   font-family: Arial, sans-serif;
   gap: 2rem;
+  height: 100vh;
   padding: 2rem;
 }
 
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 .nav-link {
-  display: block;
-  margin-bottom: 10px;
   color: white;
   text-decoration: none;
 }
@@ -25,18 +26,14 @@ body {
   text-decoration: underline;
 }
 
-.container {
+.center-content {
+  flex-grow: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #000000;
-}
-
-.draggable {
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
+  align-items: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .style-twentyone {
@@ -62,4 +59,5 @@ body {
     5px 6px 0.35px #c14d00, 
     7px 6px 0.35px #813300, 
     6px 7px 0.35px #c14d00;
+  text-align: center;
 }

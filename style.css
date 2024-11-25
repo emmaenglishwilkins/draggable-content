@@ -1,33 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #000000;
-  }
-  
-  .background {
-    position: relative;
-    width: 1024px;
-    height: 768px;
-    background-color: #000000;
-  }
-  
-  .draggable {
-    cursor: pointer;
-    width: 100px;
-    height: 100px;
-  }
-
-  .nav-link {
-    display: block;
-    margin-bottom: 10px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -40,30 +14,72 @@ body {
   padding: 2rem;
 }
 
+.nav-link {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000000;
+}
+
+.background {
+  position: relative;
+  width: 1024px;
+  height: 768px;
+  background-color: #000000;
+}
+
+.draggable {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+}
+
 .wordart {
   position: relative;
   display: inline-block;
-  .preview {
-    margin: 0 0 2rem;
-    padding: 2rem;
-  }
 }
 
-.style-twentyone {
-  .wordart {
-    transform: scaleY(1.5) skewY(-8deg) rotateZ(-3deg) translateZ(0);
-    .preview {
-      font-family: Impact, sans-serif;
-      color: transparent;
-      background: linear-gradient(to bottom left, #fee601, #fee601 15%, #fe4201);
-      -webkit-text-fill-color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      &::before {
-        @include pseudo;
-        z-index: -1;
-        text-shadow: 1px 0 0 #813300, 0 1px 0 #c14d00, 2px 1px 0.35px #813300, 1px 2px 0.35px #c14d00, 3px 2px 0.35px #813300, 2px 3px 0.35px #c14d00, 4px 3px 0.35px #813300, 3px 4px 0.35px #c14d00, 5px 4px 0.35px #813300, 4px 5px 0.35px #c14d00, 6px 5px 0.35px #813300, 5px 6px 0.35px #c14d00, 7px 6px 0.35px #813300, 6px 7px 0.35px #c14d00;
-      }
-    }
-  }
+.wordart .preview {
+  margin: 0 0 2rem;
+  padding: 2rem;
+}
+
+.style-twentyone .wordart {
+  transform: scaleY(1.5) skewY(-8deg) rotateZ(-3deg);
+}
+
+.style-twentyone .wordart .preview {
+  font-family: Impact, sans-serif;
+  color: transparent;
+  background: linear-gradient(to bottom left, #fee601, #fee601 15%, #fe4201);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 
+    1px 0 0 #813300, 
+    0 1px 0 #c14d00, 
+    2px 1px 0.35px #813300, 
+    1px 2px 0.35px #c14d00, 
+    3px 2px 0.35px #813300, 
+    2px 3px 0.35px #c14d00, 
+    4px 3px 0.35px #813300, 
+    3px 4px 0.35px #c14d00, 
+    5px 4px 0.35px #813300, 
+    4px 5px 0.35px #c14d00, 
+    6px 5px 0.35px #813300, 
+    5px 6px 0.35px #c14d00, 
+    7px 6px 0.35px #813300, 
+    6px 7px 0.35px #c14d00;
 }

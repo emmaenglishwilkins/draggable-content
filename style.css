@@ -40,16 +40,30 @@ body {
   padding: 2rem;
 }
 
-.wordart-21 {
-  font-family: 'Impact', sans-serif;
-  font-size: 48px;
-  color: #ffffff;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, #0047ab, #42a4f5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 0 #000000, 4px 4px 0 #0047ab;
-  letter-spacing: 2px;
-  text-align: center;
+.wordart {
+  position: relative;
+  display: inline-block;
+  .preview {
+    margin: 0 0 2rem;
+    padding: 2rem;
+  }
 }
 
+.style-twentyone {
+  .wordart {
+    transform: scaleY(1.5) skewY(-8deg) rotateZ(-3deg) translateZ(0);
+    .preview {
+      font-family: Impact, sans-serif;
+      color: transparent;
+      background: linear-gradient(to bottom left, #fee601, #fee601 15%, #fe4201);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      &::before {
+        @include pseudo;
+        z-index: -1;
+        text-shadow: 1px 0 0 #813300, 0 1px 0 #c14d00, 2px 1px 0.35px #813300, 1px 2px 0.35px #c14d00, 3px 2px 0.35px #813300, 2px 3px 0.35px #c14d00, 4px 3px 0.35px #813300, 3px 4px 0.35px #c14d00, 5px 4px 0.35px #813300, 4px 5px 0.35px #c14d00, 6px 5px 0.35px #813300, 5px 6px 0.35px #c14d00, 7px 6px 0.35px #813300, 6px 7px 0.35px #c14d00;
+      }
+    }
+  }
+}

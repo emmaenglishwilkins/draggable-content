@@ -7,7 +7,7 @@
   body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;  /* Align items to the left */
+    align-items: flex-start;  
     background: #ffffff;
     font-family: Arial, sans-serif;
     gap: 2rem;
@@ -16,8 +16,8 @@
   
   .nav-link {
     display: block;
-    margin-bottom: 10px;
-    color: #000000;  /* Changed color to black for better contrast on white background */
+    margin-bottom: 5px;
+    color: #000000; 
     text-decoration: none;
   }
   
@@ -27,11 +27,11 @@
   
   .container {
     display: flex;
-    align-items: flex-start; /* Align items to the left */
-    justify-content: flex-start; /* Ensure the content starts from the top left */
+    align-items: flex-start; 
+    justify-content: flex-start; 
     height: 100vh;
     background-color: #ffffff;
-    flex-direction: column;  /* Arrange content vertically */
+    flex-direction: column; 
   }
   
   .draggable {

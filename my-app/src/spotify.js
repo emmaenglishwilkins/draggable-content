@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import querystring from 'querystring';
 import { Buffer } from 'buffer';
-import {AiOutlinePauseCircle} from 'react-icons/ai';
-import {BiErrorCircle} from 'react-icons/bi'
-import {HiOutlineStatusOffline} from 'react-icons/hi'
-// import './styles.css'
+//import {AiOutlinePauseCircle} from 'react-icons/ai';
+//import {BiErrorCircle} from 'react-icons/bi'
+//import {HiOutlineStatusOffline} from 'react-icons/hi'
+import './styles.css'
 
 //Setting up the Spotify API and Endpoints
 const NOW_PLAYING_ENDPOINT = 'https://api.spotify.com/v1/me/player/currently-playing';
